@@ -1,10 +1,17 @@
-import { simpleParser } from "mailparser";
+import { simpleParser, SimpleParserOptions } from "mailparser";
 
 class App {
     public static async main() {
         try {
-            const parsed = await simpleParser(`Subject: Blah
-`);
+            // Obviously, the types are wrong about options.
+            const options: SimpleParserOptions = {
+                skipHtmlToText: true,
+                skipImageLinks: true,
+                skipTextToHtml: true,
+                skipTextLinks: true,
+            } as any;
+
+            const parsed = await simpleParser("Subject: Blah", options);
 
             return 0;
         } catch (e) {
