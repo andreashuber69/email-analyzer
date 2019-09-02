@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // Compilation options
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [ "es2015" ],
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "paths": {
+      "@/*": [ "src/*" ]
+    },
+    "strict": true,
+    // Generation options
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "include": [
+    "src/App.ts"
+  ]
+}

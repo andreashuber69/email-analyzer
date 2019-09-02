@@ -1,0 +1,19 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "words": [
+    "Andreas",
+    "Dönni"
+  ],
+  "flagWords": [],
+  "dictionaries": [
+    "typescript"
+  ],
+  "ignorePaths": [
+    "**/*.svg",
+    "node_modules/**",
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json"
+  ]
+}

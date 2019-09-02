@@ -1,0 +1,13 @@
+{
+  "cSpell.enabledLanguageIds": [
+    "json",
+    "jsonc",
+    "markdown",
+    "plaintext",
+    "typescript"
+  ],
+  "cSpell.import": [ "../cspell.json" ],
+  "files.autoSave": "onFocusChange",
+  "git.confirmSync": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
