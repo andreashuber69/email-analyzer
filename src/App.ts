@@ -1,6 +1,11 @@
+import { simpleParser } from "mailparser";
+
 class App {
     public static async main() {
         try {
+            const parsed = await simpleParser(`Subject: Blah
+`);
+
             return 0;
         } catch (e) {
             console.log(e);
