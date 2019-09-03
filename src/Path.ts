@@ -1,4 +1,4 @@
-import { createReadStream, lstat, readdir, Stats } from "fs";
+import { createReadStream, createWriteStream, lstat, readdir, Stats } from "fs";
 import { join } from "path";
 
 import { Stream } from "./Stream";
@@ -22,5 +22,9 @@ export class Path {
 
     public openRead() {
         return Stream.create(() => createReadStream(this.path));
+    }
+
+    public openWrite() {
+        return Stream.create(() => createWriteStream(this.path));
     }
 }
