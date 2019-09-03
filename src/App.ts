@@ -74,9 +74,9 @@ class App {
                 for (const message of senders[fromAddress]) {
                     const date = message.date.valueOf() / 1000 / 60 / 60 / 24 - App.excelEpochStartOffset;
                     const subject = App.escape(message.subject);
-                    const to = App.getText(message.to);
-                    const cc = App.getText(message.cc);
-                    const bcc = App.getText(message.bcc);
+                    const to = App.escape(App.getText(message.to));
+                    const cc = App.escape(App.getText(message.cc));
+                    const bcc = App.escape(App.getText(message.bcc));
                     outputStream.write(`,${date},"${subject}","${to}","${cc}","${bcc}"\n`);
                 }
             }
@@ -101,7 +101,7 @@ class App {
     }
 
     private static getText(address?: AddressObject) {
-        return address && address.text || "";
+        return address && address.value[0] && address.value[0].address || "";
     }
 }
 
