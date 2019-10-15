@@ -8,7 +8,7 @@ interface IMessage {
     readonly cc?: AddressObject;
     readonly bcc?: AddressObject;
     readonly date: Date;
-    readonly subject: string;
+    readonly subject?: string;
 }
 
 interface ISenders {
@@ -17,7 +17,7 @@ interface ISenders {
 
 class App {
     public static async main() {
-        const emailPath = new Path("/home", "andreas", "Downloads", "Received");
+        const emailPath = new Path("/home", "andreas", "Downloads");
         const senders = App.sort(await App.processEmail(emailPath));
         await App.createOutput(senders);
     }
@@ -40,10 +40,16 @@ class App {
     } as any;
 
     private static async processEmail(path: Path) {
+        let count = 0;
         const senders: ISenders = {};
 
         for (const emailFile of await path.getFiles()) {
             App.add(senders, await simpleParser(await emailFile.openRead(), App.options));
+            ++count;
+
+            if (count % 100 === 0) {
+                console.log(count);
+            }
         }
 
         return senders;
@@ -85,8 +91,8 @@ class App {
         }
     }
 
-    private static escape(subject: string) {
-        return subject.replace("\"", "\"\"");
+    private static escape(subject?: string) {
+        return subject && subject.replace("\"", "\"\"") || "";
     }
 
     private static add(senders: ISenders, { from, to, cc, bcc, date, subject }: ParsedMail) {
@@ -101,7 +107,7 @@ class App {
     }
 
     private static getText(address?: AddressObject) {
-        return address && address.value[0] && address.value[0].address || "";
+        return address && address.value && address.value.map((a) => a.address).join(",") || "";
     }
 }
 
