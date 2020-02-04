@@ -5,8 +5,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch App",
-      "runtimeArgs": [ "--require", "ts-node/register", "--nolazy" ],
-      "args": [ "src/App.ts" ],
+      "runtimeArgs": ["--require", "ts-node/register", "--nolazy"],
+      "args": ["src/App.ts"],
       "console": "integratedTerminal"
     }
   ]
