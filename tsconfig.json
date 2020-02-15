@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    // Compilation options
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [],
+    "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "strict": true,
-    // Generation options
-    "esModuleInterop": true,
-    "module": "commonjs",
     "sourceMap": true,
+    "strict": true,
     "target": "es2017"
   }
 }
